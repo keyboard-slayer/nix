@@ -1,0 +1,11 @@
+#!/bin/sh
+
+DIR="$HOME/Pictures/Screenshots"
+FILEPATH="$DIR/$(date +%Y-%m-%d-%H-%M-%S).png"
+
+if [ ! -d "$HOME/Pictures/Screenshots" ]; then
+    mkdir -p $HOME/Pictures/Screenshots
+fi
+
+wayshot -f $FILEPATH
+wl-copy < $FILEPATH
