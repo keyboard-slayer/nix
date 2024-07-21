@@ -9,13 +9,17 @@
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
+    nixvim.url = "github:nix-community/nixvim";
+    nixvim.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs @ { self, nix-darwin, home-manager, nixpkgs, ... }: {
+  outputs = inputs @ { self, nix-darwin, home-manager, nixpkgs, nixvim, ... }: {
     darwinConfigurations = {
       "Jordans-MacBook-Air" = nix-darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
+          ./host/macbook/neovim.nix
           ./host/macbook/configuration.nix
           home-manager.darwinModules.home-manager {
             home-manager.useGlobalPkgs = true;

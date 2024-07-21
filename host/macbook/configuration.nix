@@ -66,9 +66,16 @@
     };
   };
 
+  documentation.enable = true;
+  documentation.man.enable = true;
+
   homebrew = {
     enable = true;
+    brews = [
+    ];
+
     casks = [
+      "temurin"
       "arc"
       "discord"
       "visual-studio-code"

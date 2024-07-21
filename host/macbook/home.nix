@@ -2,8 +2,11 @@
 {
   home.stateVersion = "24.05";
   home.packages = [
+    pkgs.ghidra
     pkgs.neofetch
     pkgs.nix-prefetch-github
+    pkgs.man
+    pkgs.man-pages
   ];
 
   programs.fish = {
