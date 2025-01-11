@@ -4,11 +4,6 @@
   ...
 }:
 {
-  imports = [
-    inputs.nixvim.homeManagerModules.nixvim
-    ../../common/neovim
-  ];
-
   home.stateVersion = "25.05";
 
   nixpkgs.config = {
@@ -21,11 +16,12 @@
   };
 
   home.packages = [
+    pkgs.chafa
+    pkgs.keepassxc
     pkgs.man
     pkgs.man-pages
-    pkgs.chafa
+    pkgs.nixfmt-rfc-style
     pkgs.unzip
-    pkgs.keepassxc
   ];
 
   programs.kitty = {

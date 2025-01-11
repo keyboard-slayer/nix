@@ -14,6 +14,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -25,6 +30,8 @@
       self,
       nixpkgs,
       home-manager,
+      nix-darwin,
+      nixvim,
       ...
     }@inputs:
     let
@@ -38,10 +45,33 @@
         };
       };
 
+      darwinConfigurations = {
+        "MacBook-Air-de-Keyb" = nix-darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
+          modules = [
+            nixvim.nixDarwinModules.nixvim
+            ./macbook/configuration.nix
+            ./common/neovim
+
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.users.keyb = import ./macbook/home.nix;
+            }
+          ];
+          specialArgs = { inherit inputs; };
+        };
+      };
+
       homeConfigurations = {
         "keyb@PostReality" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
-          modules = [ ./PostReality/home-manager/home.nix ];
+          modules = [
+            inputs.nixvim.homeManagerModules.nixvim
+            ./common/neovim
+            ./PostReality/home-manager/home.nix
+          ];
           extraSpecialArgs = { inherit inputs outputs; };
         };
       };

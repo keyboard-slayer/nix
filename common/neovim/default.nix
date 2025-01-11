@@ -12,7 +12,4 @@
     enable = true;
   };
 
-  home.packages = [
-    pkgs.nixfmt-rfc-style
-  ];
 }
