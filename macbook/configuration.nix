@@ -1,5 +1,4 @@
 { pkgs, ... }:
-
 {
   nix.package = pkgs.nix;
   nix.settings.experimental-features = [
@@ -29,10 +28,6 @@
     shell = pkgs.fish;
   };
 
-  system.activationScripts.setFishAsShell.text = ''
-    dscl . -create /Users/keyb UserShell /run/current-system/sw/bin/fish
-  '';
-
   system.stateVersion = 4;
 
   system.keyboard = {
@@ -52,6 +47,7 @@
       tilesize = 35;
 
       persistent-apps = [
+        "/Applications/Firefox.app"
         "/Applications/Ghostty.app"
         "/system/applications/Launchpad.app"
       ];
@@ -88,6 +84,7 @@
 
     casks = [
       "ghostty"
+      "firefox"
     ];
   };
 }

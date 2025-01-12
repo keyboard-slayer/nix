@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     firefox-addons = {
-      url = "github:nix-community/nur-combined?dir=repos/rycee/pkgs/firefox-addons";
+      url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -58,6 +58,7 @@
               home-manager.useGlobalPkgs = true;
               home-manager.useUserPackages = true;
               home-manager.users.keyb = import ./macbook/home.nix;
+              home-manager.extraSpecialArgs = { inherit inputs; };
             }
           ];
           specialArgs = { inherit inputs; };
@@ -68,7 +69,7 @@
         "keyb@PostReality" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
-            inputs.nixvim.homeManagerModules.nixvim
+            nixvim.homeManagerModules.nixvim
             ./common/neovim
             ./PostReality/home-manager/home.nix
           ];
