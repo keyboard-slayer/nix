@@ -1,8 +1,10 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 {
   imports = [
     ./firefox.nix
   ];
+
+  nixpkgs.config.allowUnfree = true;
 
   home.packages = [
     pkgs.chafa
@@ -12,6 +14,8 @@
     pkgs.nixfmt-rfc-style
     pkgs.discord
     pkgs.ripgrep
+    pkgs.fastfetch
+    pkgs.ruff
   ];
 
   programs.git = {
@@ -30,10 +34,20 @@
     };
   };
 
+  programs.direnv = {
+    enable = true;
+    config = {
+      whitelist = {
+        prefix = [ "${config.home.homeDirectory}/Developer" ];
+      };
+    };
+  };
+
   programs.fish = {
     enable = true;
     interactiveShellInit = ''
       set fish_greeting
+      set -x DIRENV_LOG_FORMAT ""
       starship init fish | source
     '';
   };

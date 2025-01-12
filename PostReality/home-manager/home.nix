@@ -4,7 +4,10 @@
 }:
 {
   imports = [
-    ../common/home.nix
+    ../../common/home.nix
+    ./hyprland.nix
+    ./waybar.nix
+    ./wofi.nix
   ];
   home.stateVersion = "25.05";
 
@@ -22,6 +25,11 @@
   ];
 
   programs.kitty = {
+    font = {
+      package = pkgs.nerd-fonts.zed-mono;
+      name = "ZedMono Nerd Font";
+    };
+    shellIntegration.mode = "no-cursor";
     enable = true;
   };
 
