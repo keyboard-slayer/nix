@@ -9,6 +9,8 @@
     ./waybar.nix
     ./wofi.nix
     ./terminal.nix
+    ./screenshot.nix
+    ./nvim.nix
   ];
   home.stateVersion = "25.05";
 
@@ -23,6 +25,9 @@
 
   home.packages = [
     pkgs.unzip
+    pkgs.wl-clipboard
+    pkgs.tor-browser
+    pkgs.thunderbird
   ];
 
   systemd.user.startServices = "sd-switch";

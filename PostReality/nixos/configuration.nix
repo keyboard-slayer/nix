@@ -62,6 +62,10 @@
 
   programs.fish.enable = true;
 
+  security.polkit.enable = true;
+  security.pam.services.sddm.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.keyb = {
     isNormalUser = true;
@@ -70,10 +74,6 @@
     extraGroups = [
       "networkmanager"
       "wheel"
-    ];
-    packages = with pkgs; [
-      kdePackages.kwallet
-      #  thunderbird
     ];
   };
 

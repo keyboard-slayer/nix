@@ -1,5 +1,22 @@
 {
   programs.nixvim = {
+    autoGroups.yankhighlight.clear = true;
+    autoCmd = [
+      {
+        callback.__raw = ''
+          function()
+            vim.highlight.on_yank()
+          end
+        '';
+
+        group = "yankhighlight";
+        pattern = "*";
+
+        event = [
+          "TextYankPost"
+        ];
+      }
+    ];
     globalOpts = {
       guicursor = "";
       number = true;

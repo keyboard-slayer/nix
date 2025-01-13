@@ -45,8 +45,14 @@
 
   programs.fish = {
     enable = true;
+
+    shellAliases = {
+      shell = "nix develop --command fish";
+    };
+
     interactiveShellInit = ''
       set fish_greeting
+      set -U fish_user_paths ~/.local/bin $fish_user_paths
       set -x DIRENV_LOG_FORMAT ""
       starship init fish | source
     '';
