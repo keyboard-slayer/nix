@@ -65,6 +65,7 @@
 
     NSGlobalDomain = {
       "com.apple.swipescrolldirection" = false;
+      "com.apple.mouse.tapBehavior" = 1;
       AppleInterfaceStyleSwitchesAutomatically = true;
       AppleShowAllExtensions = true;
       AppleInterfaceStyle = "Dark";
@@ -83,6 +84,7 @@
     ];
 
     casks = [
+      "thunderbird"
       "ghostty"
       "firefox"
     ];
