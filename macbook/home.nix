@@ -1,7 +1,4 @@
 {
-  ...
-}:
-{
   imports = [
     ../common/home.nix
   ];

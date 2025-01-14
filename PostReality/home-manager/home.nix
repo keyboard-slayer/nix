@@ -10,7 +10,6 @@
     ./wofi.nix
     ./terminal.nix
     ./screenshot.nix
-    ./nvim.nix
   ];
   home.stateVersion = "25.05";
 
