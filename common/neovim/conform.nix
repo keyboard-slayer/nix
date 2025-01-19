@@ -12,6 +12,7 @@
       formatters_by_ft = {
         nix = [ "nixfmt" ];
         python = [ "ruff_format" ];
+        rust = [ "rustfmt" ];
       };
     };
   };

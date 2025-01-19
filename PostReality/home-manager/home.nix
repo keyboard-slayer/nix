@@ -22,11 +22,12 @@
     homeDirectory = "/home/keyb";
   };
 
-  home.packages = [
-    pkgs.unzip
-    pkgs.wl-clipboard
-    pkgs.tor-browser
-    pkgs.thunderbird
+  home.packages = with pkgs; [
+    obsidian
+    unzip
+    wl-clipboard
+    tor-browser
+    thunderbird
   ];
 
   systemd.user.startServices = "sd-switch";

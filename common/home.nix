@@ -58,6 +58,8 @@
     '';
   };
 
+  services.syncthing.enable = true;
+
   programs.starship = {
     enable = true;
     settings = {
