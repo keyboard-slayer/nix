@@ -48,7 +48,7 @@
           url = "https://home-manager-options.extranix.com/";
         }
         {
-          name = "Synthing - Local instance";
+          name = "Syncthing - Local instance";
           tags = [ "services" ];
           keyword = "syncthing";
           url = "http://127.0.0.1:8384";

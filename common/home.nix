@@ -15,7 +15,7 @@
     pkgs.discord
     pkgs.ripgrep
     pkgs.fastfetch
-    pkgs.ruff
+    # pkgs.ruff
   ];
 
   programs.git = {
