@@ -60,6 +60,8 @@
         sponsorblock
         canvasblocker
         violentmonkey
+        temporary-containers
+        containerise
       ];
 
       settings = {
