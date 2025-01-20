@@ -48,6 +48,12 @@
           url = "https://home-manager-options.extranix.com/";
         }
         {
+          name = "NixOS Search";
+          tags = [ "nix" ];
+          keyword = "nix serch";
+          url = "https://search.nixos.org/packages";
+        }
+        {
           name = "Syncthing - Local instance";
           tags = [ "services" ];
           keyword = "syncthing";

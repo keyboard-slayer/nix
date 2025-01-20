@@ -41,7 +41,11 @@
       nixosConfigurations = {
         PostReality = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; };
-          modules = [ ./PostReality/nixos/configuration.nix ];
+          modules = [ ./machines/PostReality/configuration.nix ];
+        };
+        Thonkpad = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; };
+          modules = [ ./machines/Thonkpad/configuration.nix ];
         };
       };
 
@@ -66,12 +70,22 @@
       };
 
       homeConfigurations = {
+        "keyb@Thonkpad" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.x86_64-linux;
+          modules = [
+            nixvim.homeManagerModules.nixvim
+            ./common/neovim
+            ./linux/home.nix
+          ];
+          extraSpecialArgs = { inherit inputs outputs; };
+        };
+
         "keyb@PostReality" = home-manager.lib.homeManagerConfiguration {
           pkgs = nixpkgs.legacyPackages.x86_64-linux;
           modules = [
             nixvim.homeManagerModules.nixvim
             ./common/neovim
-            ./PostReality/home-manager/home.nix
+            ./linux/home.nix
           ];
           extraSpecialArgs = { inherit inputs outputs; };
         };

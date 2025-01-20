@@ -1,4 +1,8 @@
+{ pkgs, ... }:
 {
+  home.packages = [
+    pkgs.brightnessctl
+  ];
   wayland.windowManager.hyprland = {
     enable = true;
     xwayland.enable = true;
@@ -25,6 +29,8 @@
           "$mainMod, Return, exec, kitty"
           "$mainMod SHIFT, A, killactive"
           "$mainMod, F, fullscreen"
+          ",XF86MonBrightnessDown, exec, brightnessctl s 10%-"
+          ",XF86MonBrightnessUp, exec, brightnessctl s +10%"
         ]
         ++ (builtins.concatLists (
           builtins.genList (

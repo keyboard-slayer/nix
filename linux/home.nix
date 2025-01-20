@@ -1,15 +1,14 @@
-{
-  pkgs,
-  ...
-}:
+{ pkgs, ... }:
 {
   imports = [
-    ../../common/home.nix
+    ../common/home.nix
     ./hyprland.nix
     ./waybar.nix
     ./wofi.nix
     ./terminal.nix
     ./screenshot.nix
+    ./wlsunset.nix
+    ./gtk.nix
   ];
   home.stateVersion = "25.05";
 
