@@ -8,22 +8,22 @@
       }
     ];
 
-    # autoCmd = [
-    #   {
-    #     callback.__raw = ''
-    #       function()
-    #         vim.o.number = false
-    #         vim.o.relativenumber = false
-    #       end
-    #     '';
-    #
-    #     pattern = "*";
-    #
-    #     event = [
-    #       "TermOpen"
-    #     ];
-    #   }
-    # ];
+    autoCmd = [
+      {
+        callback.__raw = ''
+          function()
+            vim.o.number = false
+            vim.o.relativenumber = false
+          end
+        '';
+
+        pattern = "*";
+
+        event = [
+          "TermOpen"
+        ];
+      }
+    ];
 
     extraFiles = {
       "plugin/terminal.lua".text = ''

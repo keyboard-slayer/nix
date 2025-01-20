@@ -34,6 +34,16 @@
       '';
     };
 
+    extraConfigLua = ''
+      -- NOTE: If you find those lines stupid, try to comment it and edit a file for the cwd:
+      --       > nvim ./flake.nix
+      --       Does the line number works ?
+      --       Y: Remove those lines
+      --       N: Keep it
+      vim.o.number = true
+      vim.o.relativenumber = true
+    '';
+
     plugins.lazy = {
       enable = true;
     };

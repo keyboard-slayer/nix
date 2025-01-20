@@ -11,7 +11,7 @@
       statuscolumn.enable = true;
       words.enable = true;
       dashboard = {
-        enable = true;
+        enable = false;
         sections = [
           {
             section = "terminal";
