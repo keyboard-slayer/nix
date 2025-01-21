@@ -13,6 +13,11 @@
     ./hardware-configuration.nix
   ];
 
+  system.autoUpgrade = {
+    enable = true;
+    dates = "weekly";
+  };
+
   gc = {
     automatic = true;
     dates = "weekly";
