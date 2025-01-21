@@ -3,10 +3,7 @@
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
 {
-  config,
   pkgs,
-  pkgs-stable,
-  inputs,
   ...
 }:
 
@@ -15,6 +12,12 @@
     # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
+
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
 
   nix.settings.experimental-features = [
     "nix-command"

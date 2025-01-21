@@ -1,5 +1,11 @@
 { pkgs, config, ... }:
 {
+  gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
   nix.package = pkgs.nix;
   nix.settings.experimental-features = [
     "nix-command"
