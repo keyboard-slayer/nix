@@ -68,6 +68,7 @@
         violentmonkey
         temporary-containers
         containerise
+        darkreader
       ];
 
       settings = {
