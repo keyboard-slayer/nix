@@ -28,6 +28,7 @@
     tor-browser
     thunderbird
     pavucontrol
+    spotify
   ];
 
   systemd.user.startServices = "sd-switch";
