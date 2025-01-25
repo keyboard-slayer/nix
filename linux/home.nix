@@ -27,6 +27,7 @@
     wl-clipboard
     tor-browser
     thunderbird
+    pavucontrol
   ];
 
   systemd.user.startServices = "sd-switch";
