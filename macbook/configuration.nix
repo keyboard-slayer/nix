@@ -50,6 +50,7 @@
       persistent-apps = [
         "/Applications/Firefox.app"
         "/Applications/Spotify.app"
+        "/Applications/Todoist.app"
         "/Applications/Ghostty.app"
         "/system/applications/Launchpad.app"
       ];
@@ -86,11 +87,18 @@
     ];
 
     casks = [
+      "zen-browser"
       "spotify"
       "obsidian"
       "thunderbird"
       "ghostty"
       "firefox"
+      "tor-browser"
+      "calibre"
+      "transmission"
+      "veracrypt"
+      "keepassxc"
+      "todoist"
     ];
   };
 

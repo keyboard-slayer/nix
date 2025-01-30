@@ -23,6 +23,7 @@
 
   home.packages = with pkgs; [
     obsidian
+    keepassxc
     unzip
     wl-clipboard
     tor-browser

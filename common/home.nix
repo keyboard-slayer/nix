@@ -8,7 +8,6 @@
 
   home.packages = [
     pkgs.chafa
-    pkgs.keepassxc
     pkgs.man
     pkgs.man-pages
     pkgs.nixfmt-rfc-style
@@ -21,7 +20,7 @@
   programs.git = {
     enable = true;
     userName = "keyboard-slayer";
-    userEmail = "jordan@dalcq.eu";
+    userEmail = "git@keyb.moe";
     ignores = [
       ".DS_Store"
     ];
