@@ -1,24 +1,27 @@
 { pkgs, ... }:
 {
   imports = [
-    ../../dotfiles/ghostty.nix
-    ../../dotfiles/librewolf.nix
     ../../dotfiles/neovim.nix
     ../../dotfiles/zsh.nix
     ../../dotfiles/fzf.nix
-    ../../dotfiles/direnv.nix
-    ../../dotfiles/tmux.nix
   ];
 
+  home = {
+    username = "keyb";
+    homeDirectory = "/home/keyb";
+  };
+
   home.packages = with pkgs; [
-    discord
-    ffmpeg
+    git
+    neofetch
   ];
 
   programs.zsh.shellAliases = {
-    anix = "git -C ~/nix add . && sudo darwin-rebuild switch --flake ~/nix";
+    anix = "git -C ~/nix add . && sudo nixos-rebuild switch --flake ~/nix && home-manager switch --flake ~/nix";
   };
 
   home.stateVersion = "25.05";
+  systemd.user.startServices = "sd-switch";
   programs.home-manager.enable = true;
+
 }

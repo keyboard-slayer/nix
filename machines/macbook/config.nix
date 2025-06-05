@@ -36,17 +36,20 @@
   };
 
   system.defaults = {
+    screencapture.location = "~/Pictures/screenshots";
     dock = {
       autohide = false;
       magnification = true;
-
       show-recents = true;
       largesize = 50;
       tilesize = 35;
 
       persistent-apps = [
+        "/system/applications/Messages.app"
+        "/system/applications/Mail.app"
         "${pkgs.librewolf}/Applications/LibreWolf.app"
         "${pkgs.ghostty-bin}/Applications/Ghostty.app"
+        "${pkgs.discord}/Applications/Discord.app"
         "/system/applications/Launchpad.app"
       ];
 
@@ -58,11 +61,10 @@
     finder = {
       CreateDesktop = false;
       AppleShowAllExtensions = true;
-      _FXShowPosixPathInTitle = true;
     };
 
     NSGlobalDomain = {
-     "com.apple.swipescrolldirection" = false;
+      "com.apple.swipescrolldirection" = false;
       "com.apple.mouse.tapBehavior" = 1;
       AppleInterfaceStyleSwitchesAutomatically = true;
       AppleShowAllExtensions = true;
@@ -81,29 +83,37 @@
     brews = [
     ];
 
+    taps = [
+      "mbwilding/neospleen"
+    ];
+
     casks = [
+      "anytype"
+      "spotify"
+      "font-neospleen-nerd-font"
+      "postgres-unofficial"
     ];
   };
 
   system.activationScripts.applications.text =
-  let
-    env = pkgs.buildEnv {
-      name = "system-applications";
-      paths = config.environment.systemPackages;
-      pathsToLink = "/Applications";
-    };
-  in
-  pkgs.lib.mkForce ''
-    # Set up applications.
-    echo "setting up /Applications..." >&2
-    rm -rf /Applications/Nix\ Apps
-    mkdir -p /Applications/Nix\ Apps
-    find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
-    while read -r src; do
-      app_name=$(basename "$src")
-      echo "copying $src" >&2
-      ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
-    done
-  '';
+    let
+      env = pkgs.buildEnv {
+        name = "system-applications";
+        paths = config.environment.systemPackages;
+        pathsToLink = "/Applications";
+      };
+    in
+    pkgs.lib.mkForce ''
+      # Set up applications.
+      echo "setting up /Applications..." >&2
+      rm -rf /Applications/Nix\ Apps
+      mkdir -p /Applications/Nix\ Apps
+      find ${env}/Applications -maxdepth 1 -type l -exec readlink '{}' + |
+      while read -r src; do
+        app_name=$(basename "$src")
+        echo "copying $src" >&2
+        ${pkgs.mkalias}/bin/mkalias "$src" "/Applications/Nix Apps/$app_name"
+      done
+    '';
 
 }
