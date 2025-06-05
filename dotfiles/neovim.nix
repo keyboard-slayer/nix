@@ -1,4 +1,4 @@
-{ inputs, ... }:
+{ inputs, lib, ... }:
 {
   imports = [
     inputs.nvf.homeManagerModules.default
@@ -105,9 +105,43 @@
           key = "<leader>p";
           action = "\"+p";
         }
+        {
+          mode = [ "t" ];
+          key = "<Esc><Esc>";
+          action = "<C-\\><C-n>";
+        }
       ];
 
-      autocmds = [ ];
+      augroups = [
+        {
+          name = "highlight-yank";
+          clear = true;
+        }
+      ];
+
+      autocmds = [
+        {
+          event = [ "Filetype" ];
+          pattern = [ "nix" ];
+          callback = lib.generators.mkLuaInline ''
+            function()
+              vim.bo.shiftwidth = 2
+              vim.bo.tabstop = 2
+              vim.bo.softtabstop = 2
+              vim.bo.expandtab = true
+            end
+          '';
+        }
+        {
+          event = [ "TextYankPost" ];
+          group = "highlight-yank";
+          callback = lib.generators.mkLuaInline ''
+            function()
+              vim.highlight.on_yank()
+            end
+          '';
+        }
+      ];
 
       theme = {
         enable = true;
