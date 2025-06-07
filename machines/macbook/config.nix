@@ -21,8 +21,6 @@
     pkgs.mkalias
   ];
 
-  programs.fish.enable = true;
-
   users.users.jordan = {
     home = "/Users/jordan";
     shell = pkgs.zsh;
